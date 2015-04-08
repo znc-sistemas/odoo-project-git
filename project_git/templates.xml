@@ -1,0 +1,69 @@
+<openerp>
+    <data>
+
+         <template id="assets_backend" name="project assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/project_git/static/css/project.css"/>
+            </xpath>
+        </template>
+
+         <record id="view_task_form_with_id" model="ir.ui.view">
+            <field name="name">project.task.form.view.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/h1" position="before">
+                    <h2 class="task-number">#<field name="id" class="oe_inline" /></h2>
+                </xpath>
+            </field>
+        </record>
+
+         <record id="view_task_kanban_with_id" model="ir.ui.view">
+            <field name="name">project.task.kanban.view.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <h3 class="task-number">#<field name="id" class="oe_inline" /></h3>
+                </field>
+            </field>
+        </record>
+
+         <record id="view_task_tree_with_id" model="ir.ui.view">
+            <field name="name">project.task.tree.view.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="id" />
+                </field>
+            </field>
+        </record>
+
+<!--
+        <template id="view_task_kanban_with_id" inherit_id="project.view_task_kanban">
+            <xpath expr="//div[hasclass('oe_kanban_content')]" position="inside">
+                <div><strong><field name="id"/></strong></div>
+            </xpath>
+        </template>
+-->
+        <!-- <template id="listing"> -->
+        <!--   <ul> -->
+        <!--     <li t-foreach="objects" t-as="object"> -->
+        <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
+        <!--         <t t-esc="object.display_name"/> -->
+        <!--       </a> -->
+        <!--     </li> -->
+        <!--   </ul> -->
+        <!-- </template> -->
+        <!-- <template id="object"> -->
+        <!--   <h1><t t-esc="object.display_name"/></h1> -->
+        <!--   <dl> -->
+        <!--     <t t-foreach="object._fields" t-as="field"> -->
+        <!--       <dt><t t-esc="field"/></dt> -->
+        <!--       <dd><t t-esc="object[field]"/></dd> -->
+        <!--     </t> -->
+        <!--   </dl> -->
+        <!-- </template> -->
+    </data>
+</openerp>
