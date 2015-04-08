@@ -34,7 +34,7 @@ Push webhook URL: /project_git/push
     ],
     'installable': True,
     'application': True,
-
+    'auto_install': False
     # 'external_dependencies': {
     #     'python': ['python-dateutil'],
     # }
