@@ -240,8 +240,8 @@ class ProjectGit(http.Controller):
             )
 
             for commit in payload_obj['commits']:
-                # TODO: search for res.user corresponding to the git user
-                cm_user = commit['author']
+
+                odoo_user = http.request.env['res.users'].search([["git_username", "=", commit['author']]])
 
                 cm_message = commit['message']
                 # TODO: use python-dateutil,
@@ -267,7 +267,7 @@ class ProjectGit(http.Controller):
                             'name': name,
                             'date': cm_timestamp,
                             'task_id': task_id,
-                            # 'user_id':
+                            'user_id': odoo_user.id
                         }
 
                         # Extracts time spent
