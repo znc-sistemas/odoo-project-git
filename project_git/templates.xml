@@ -1,26 +1,13 @@
 <openerp>
     <data>
 
-         <template id="assets_backend" name="project assets" inherit_id="web.assets_backend">
+        <template id="assets_backend" name="project assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
                 <link rel="stylesheet" href="/project_git/static/css/project.css"/>
             </xpath>
         </template>
 
-        <record model="ir.ui.view" id="project_git">
-            <field name="name">base.view_users_form_simple_modif_git</field>
-            <field name="model">res.users</field>
-            <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
-            <field name="arch" type="xml">
-                <xpath expr="/form/group[@name='preferences']" position="after">
-                    <group string="Git Integration Settings">
-                    <field name="git_username" string="Git Username"/>
-                    </group>
-                </xpath>
-            </field>
-        </record>
-
-         <record id="view_task_form_with_id" model="ir.ui.view">
+        <record id="view_task_form_with_id" model="ir.ui.view">
             <field name="name">project.task.form.view.inherit</field>
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_form2"/>
@@ -31,18 +18,7 @@
             </field>
         </record>
 
-         <record id="view_task_form_with_id" model="ir.ui.view">
-            <field name="name">project.task.form.view.inherit</field>
-            <field name="model">project.task</field>
-            <field name="inherit_id" ref="project.view_task_form2"/>
-            <field name="arch" type="xml">
-                <h1 position="before">
-                    <h2 class="task-number">#<field name="id" class="oe_inline" /></h2>
-                </h1>
-            </field>
-        </record>
-
-         <record id="view_task_kanban_with_id" model="ir.ui.view">
+        <record id="view_task_kanban_with_id" model="ir.ui.view">
             <field name="name">project.task.kanban.view.inherit</field>
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_kanban"/>
@@ -53,7 +29,7 @@
             </field>
         </record>
 
-         <record id="view_task_tree_with_id" model="ir.ui.view">
+        <record id="view_task_tree_with_id" model="ir.ui.view">
             <field name="name">project.task.tree.view.inherit</field>
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_tree2"/>

@@ -246,6 +246,7 @@ class ProjectGit(http.Controller):
                 cm_message = commit['message']
                 # TODO: use python-dateutil,
                 # discover how to install python deps
+                # convert timezone, remove hardcoded UTC-3
                 cm_timestamp = timestamp_from_utc(commit['utctimestamp']) - datetime.timedelta(hours=3)
 
                 # Extracts task ID from commit message
@@ -265,9 +266,15 @@ class ProjectGit(http.Controller):
 
                         vals = {
                             'name': name,
-                            'date': cm_timestamp,
-                            'task_id': task_id,
-                            'user_id': odoo_user.id
+                            'date': str(cm_timestamp),
+                            # for the old API, used in project_timesheet
+                            # task_id needs to be an integer, for new API
+                            # it can be a string
+                            'task_id': int(task_id),
+                            # TODO: extract user ID from
+                            # commit message and custom field
+                            'user_id': SUPERUSER_ID,
+                            'hours': 0.0
                         }
 
                         # Extracts time spent

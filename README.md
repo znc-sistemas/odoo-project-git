@@ -1,4 +1,5 @@
-# Odoo Project Git Integration
+# ![Odoo Project Git Integration](https://raw.githubusercontent.com/znc-sistemas/odoo-project-git/master/project_git/static/src/img/icon.png) Odoo Project Git Integration
+
 
 Odoo Project integration with git repositories push webhooks.
 
