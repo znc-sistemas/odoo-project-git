@@ -39,6 +39,20 @@
                 </field>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="project_git">
+            <field name="name">base.view_users_form_simple_modif_git</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/group[@name='preferences']" position="after">
+                    <group string="Git Integration Settings">
+                        <field name="git_username" string="Git Username"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
 <!--
         <template id="view_task_kanban_with_id" inherit_id="project.view_task_kanban">
             <xpath expr="//div[hasclass('oe_kanban_content')]" position="inside">
