@@ -244,10 +244,8 @@ class ProjectGit(http.Controller):
                 odoo_user = http.request.env['res.users'].search([["git_username", "=", commit['author']]])
 
                 cm_message = commit['message']
-                # TODO: use python-dateutil,
-                # discover how to install python deps
-                # convert timezone, remove hardcoded UTC-3
-                cm_timestamp = timestamp_from_utc(commit['utctimestamp']) - datetime.timedelta(hours=3)
+                # TODO: use python-dateutil
+                cm_timestamp = timestamp_from_utc(commit['utctimestamp'])
 
                 # Extracts task ID from commit message
                 ids = re.findall(r'\#\d+', cm_message)
